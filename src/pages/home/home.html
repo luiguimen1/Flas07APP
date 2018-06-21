@@ -1,0 +1,55 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        <sub class="hola">Hola mundo</sub>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+-->
+<ion-content padding>
+    <h1 id="Titulo">SisInf de ROPA COOL</h1>
+    <div class="caja">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <button ion-button round class="Titulo button_azulCalido">Crear<br>Categoría</button>
+                </ion-col>
+                <ion-col>
+                    <img id="listaCat" src="../assets/imgs/esta/listaCat.png" />
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-6>
+                    <ion-label color="primary">Numero 1</ion-label>
+                    <ion-input placeholder="Ingrese un numero" [(ngModel)]="n1"></ion-input>
+                </ion-col>
+                <ion-col col-6>
+                    <ion-label color="primary">Numero 2</ion-label>
+                    <ion-input type="text" placeholder="Ingrese un numero" [(ngModel)]="n2"></ion-input>
+                </ion-col>
+                <ion-col>
+                    <button ion-button round class="Titulo button_azulCalido"  (click)='suma()'>SUMA</button>
+                    <button ion-button round class="Titulo button_azulCalido">Resta</button>
+                    <button ion-button round class="Titulo button_azulCalido">Multi</button>
+                    <button ion-button round class="Titulo button_azulCalido">Divi</button>
+                    <button ion-button round class="Titulo button_azulCalido">Tabla de multiplicar</button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <fieldset>
+                        <legend>En este contenedor van los resultados</legend>
+                        <p>{{ resultado }}</p>
+                    </fieldset>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-title><span class="hola">Footer</span></ion-title>
+    </ion-toolbar>
+</ion-footer>
