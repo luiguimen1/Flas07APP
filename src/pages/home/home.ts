@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {RestaPage} from '../resta/resta';
+import {TablamPage} from '../tablam/tablam';
 
 @Component({
     selector: 'page-home',
@@ -29,9 +30,18 @@ export class HomePage {
         let data = {
             n1: this.n1,
             n2: this.n2
-        }
+        };
         this.navCtrl.push(RestaPage, {objecto: data});
     }
+    Tabla() {
+        let data = {
+            n1: this.n1,
+            n2: this.n2
+        };
+        this.navCtrl.push(TablamPage, {objecto: data});
+    }
+
+
 
 
 

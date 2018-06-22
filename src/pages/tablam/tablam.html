@@ -1,0 +1,31 @@
+<!--
+  Generated template for the TablamPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tabla de {{ numero1 }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col>Item</ion-col>
+            <ion-col>*</ion-col>
+            <ion-col>Valor</ion-col>
+            <ion-col>=</ion-col>
+            <ion-col>Resul</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let piso of edificio">
+            <ion-col>{{ piso.item }}</ion-col>
+            <ion-col>*</ion-col>
+            <ion-col>{{ piso.valor}}</ion-col>
+            <ion-col>=</ion-col>
+            <ion-col>{{piso.resul}}</ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {TablamPage} from '../pages/tablam/tablam';
 
 import {RestaPage} from '../pages/resta/resta';
 
@@ -13,7 +14,8 @@ import {RestaPage} from '../pages/resta/resta';
   declarations: [
     MyApp,
     HomePage,
-    RestaPage
+    RestaPage,
+    TablamPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import {RestaPage} from '../pages/resta/resta';
   entryComponents: [
     MyApp,
     HomePage,
-    RestaPage
+    RestaPage,
+    TablamPage
   ],
   providers: [
     StatusBar,
