@@ -1,0 +1,20 @@
+1. crea crea la page ********************
+ionic generate page nombre
+
+2. se debere presertar la page ante el sistema *********
+para lo caul se va a app.modules************************
+se crea la instacia de import **************************
+
+import {RestaPage} from '../pages/resta/resta';
+
+
+3. ahora se declara y se presenta **********************
+apra se va el segmento de declarations y al de entryComponents
+y se coloca la varaible
+**************************************************************
+
+Como se navega entre page ************************************
+setRoot -> cambio
+push    -> Agregue
+
+se debe importar en la page de origen ************************

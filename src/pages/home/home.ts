@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import {RestaPage} from '../resta/resta';
 
 @Component({
     selector: 'page-home',
@@ -21,6 +22,15 @@ export class HomePage {
 
     suma() {
         this.resultado = "la suma de " + this.n1 + " + " + this.n2 + " = " + (this.conF(this.n1) + this.conF(this.n2));
+    }
+
+
+    resta() {
+        let data = {
+            n1: this.n1,
+            n2: this.n2
+        }
+        this.navCtrl.push(RestaPage, {objecto: data});
     }
 
 
