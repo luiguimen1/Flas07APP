@@ -1,0 +1,44 @@
+<!--
+  Generated template for the ForcrecatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Crear categoria</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <h1 class="LosTitulo"> Formulario de registro<br>de categorias </h1>
+    <form [formGroup]="ForRegCate" (ngSubmit)="presentConfirm()" novalidate>
+        <ion-list> 
+            <!-- Validacion campo NOmbre -->
+            <ion-item>
+                <ion-label stacked>Nombre</ion-label>
+                <ion-input formControlName="nombre" type="text" placeholder="Ingrese Nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="ForRegCate.get('nombre').errors && ForRegCate.get('nombre').dirty">
+                <p color="danger" ion-text *ngIf="ForRegCate.get('nombre').hasError('required')">Debe Ingresar datos</p>
+                <p color="danger" ion-text *ngIf="ForRegCate.get('nombre').hasError('pattern')">Solo acepta de a - Z</p>
+            </ion-item>
+            <!-- Validacion campo Destalles -->
+            <ion-item>
+                <ion-label stacked>Descripción</ion-label>
+                <ion-input formControlName="descripcion" type="text" placeholder="Ingrese Nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="ForRegCate.get('descripcion').errors && ForRegCate.get('descripcion').dirty">
+                <p color="danger" ion-text *ngIf="ForRegCate.get('descripcion').hasError('required')">Debe Ingresar datos</p>
+                <p color="danger" ion-text *ngIf="ForRegCate.get('descripcion').hasError('pattern')">Solo acepta de a - Z</p>
+            </ion-item>
+
+            <div padding>
+                <button ion-button block type="submit" [disabled]="ForRegCate.invalid">Guardar</button>
+            </div>
+        </ion-list>
+    </form>
+
+</ion-content>

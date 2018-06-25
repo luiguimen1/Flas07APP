@@ -9,13 +9,15 @@ import { HomePage } from '../pages/home/home';
 import {TablamPage} from '../pages/tablam/tablam';
 
 import {RestaPage} from '../pages/resta/resta';
+import {ForcrecatPage} from '../pages/forcrecat/forcrecat';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     RestaPage,
-    TablamPage
+    TablamPage,
+    ForcrecatPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import {RestaPage} from '../pages/resta/resta';
     MyApp,
     HomePage,
     RestaPage,
-    TablamPage
+    TablamPage,
+    ForcrecatPage
   ],
   providers: [
     StatusBar,

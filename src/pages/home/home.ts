@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {RestaPage} from '../resta/resta';
 import {TablamPage} from '../tablam/tablam';
+import {ForcrecatPage} from '../forcrecat/forcrecat';
 
 @Component({
     selector: 'page-home',
@@ -40,7 +41,10 @@ export class HomePage {
         };
         this.navCtrl.push(TablamPage, {objecto: data});
     }
-
+    
+    irCreateCate(){
+        this.navCtrl.push(ForcrecatPage);
+    }
 
 
 
