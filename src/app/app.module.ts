@@ -10,6 +10,7 @@ import {TablamPage} from '../pages/tablam/tablam';
 
 import {RestaPage} from '../pages/resta/resta';
 import {ForcrecatPage} from '../pages/forcrecat/forcrecat';
+import {ForcreproPage} from '../pages/forcrepro/forcrepro';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {ForcrecatPage} from '../pages/forcrecat/forcrecat';
     HomePage,
     RestaPage,
     TablamPage,
-    ForcrecatPage
+    ForcrecatPage,
+    ForcreproPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import {ForcrecatPage} from '../pages/forcrecat/forcrecat';
     HomePage,
     RestaPage,
     TablamPage,
-    ForcrecatPage
+    ForcrecatPage,
+    ForcreproPage
   ],
   providers: [
     StatusBar,

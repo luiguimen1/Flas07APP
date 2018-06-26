@@ -1,0 +1,71 @@
+<!--
+  Generated template for the ForcreproPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>Crear Producto</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <h1 class="LosTitulo"> Formulario de registro<br>de categorias </h1>
+    <form [formGroup]="ForRegProd" (ngSubmit)="presentConfirm()" novalidate>
+        <ion-list> 
+            <!-- Validacion campo fkCategoria -->
+            <ion-item>
+                <ion-label stacked>Categoría</ion-label>
+                <ion-select formControlName="fkCat" placeholder="Seleccione un categoría">
+                    <ion-option value="1">Prueba 1</ion-option>
+                    <ion-option value="2">Prueba 2</ion-option>
+                    <ion-option value="3">Prueba 3</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="ForRegProd.get('fkCat').errors && ForRegProd.get('fkCat').dirty">
+                <p color="danger" ion-text *ngIf="ForRegProd.get('fkCat').hasError('required')">Debe seleccionar un categoría</p>
+            </ion-item>
+            <!-- Validacion campo NOmbre -->
+            <ion-item>
+                <ion-label stacked>Nombre</ion-label>
+                <ion-input formControlName="nombre" type="text" placeholder="Ingrese Nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="ForRegProd.get('nombre').errors && ForRegProd.get('nombre').dirty">
+                <p color="danger" ion-text *ngIf="ForRegProd.get('nombre').hasError('required')">Debe Ingresar datos</p>
+                <p color="danger" ion-text *ngIf="ForRegProd.get('nombre').hasError('pattern')">Solo acepta de a - Z</p>
+            </ion-item>
+            <!-- Validacion campo Destalles -->
+            <ion-item>
+                <ion-label stacked>Descripción</ion-label>
+                <ion-input formControlName="descripcion" type="text" placeholder="Ingrese Nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="ForRegProd.get('descripcion').errors && ForRegProd.get('descripcion').dirty">
+                <p color="danger" ion-text *ngIf="ForRegProd.get('descripcion').hasError('required')">Debe Ingresar datos</p>
+                <p color="danger" ion-text *ngIf="ForRegProd.get('descripcion').hasError('pattern')">Solo acepta de a - Z</p>
+            </ion-item>
+            <!-- Validacion campo Valor -->
+            <ion-item>
+                <ion-label stacked>Valor</ion-label>
+                <ion-input formControlName="valor" type="text" placeholder="Ingrese Nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="ForRegProd.get('valor').errors && ForRegProd.get('valor').dirty">
+                <p color="danger" ion-text *ngIf="ForRegProd.get('valor').hasError('required')">Debe Ingresar datos</p>
+                <p color="danger" ion-text *ngIf="ForRegProd.get('valor').hasError('pattern')">Solo acepta de 0 - 9</p>
+            </ion-item>
+            <!-- Validacion campo Cantidad -->
+            <ion-item>
+                <ion-label stacked>Cantidad</ion-label>
+                <ion-input formControlName="cant" type="text" placeholder="Ingrese Nombre"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="ForRegProd.get('cant').errors && ForRegProd.get('cant').dirty">
+                <p color="danger" ion-text *ngIf="ForRegProd.get('cant').hasError('required')">Debe Ingresar datos</p>
+                <p color="danger" ion-text *ngIf="ForRegProd.get('cant').hasError('pattern')">Solo acepta de 0-9</p>
+            </ion-item>
+            <div padding>
+                <button ion-button block type="submit" [disabled]="ForRegProd.invalid">Guardar</button>
+            </div>
+        </ion-list>
+    </form>
+</ion-content>
