@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController} from 'ionic-angular';
+import {ConectarswProvider} from '../../providers/conectarsw/conectarsw';
 
 /**
  * Generated class for the ForcrecatPage page.
@@ -17,7 +18,7 @@ import {AlertController} from 'ionic-angular';
 })
 export class ForcrecatPage {
     ForRegCate: FormGroup;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, private alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, private alertCtrl: AlertController, private conecta:ConectarswProvider) {
         this.iniciarFormulario();
     }
 
@@ -32,17 +33,28 @@ export class ForcrecatPage {
         let categoria = {
             cat: this.ForRegCate.value
         }
-        console.table(categoria);
-        let hola = "Confirmación";
-        let mensaje = "La categoria fue creada si problema en el sistema";
-        this.presentAlert(hola,mensaje);
-        this.iniciarFormulario();
+        let estado = this.conecta.registarCategoria(categoria);
+        
+        estado.subscribe(data=>{
+            this.analizarRes(data);
+        },err=>{
+         this.presentAlert("Error #23","No hay acceso al servidor WEB");
+           console.log(err.messages); 
+        });
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ForcrecatPage');
     }
-
+    
+    analizarRes(data){
+        if(data.success == "OK"){
+            this.presentAlert("Confirmación","La categoria fue creada sin problema");
+            this. iniciarFormulario();
+        }else{
+            this.presentAlert("Error #24","La categoria NO fue creada.");
+        }
+    }
 
     presentConfirm() {
         let alert = this.alertCtrl.create({
