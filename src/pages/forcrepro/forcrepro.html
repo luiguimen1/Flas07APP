@@ -18,9 +18,7 @@
             <ion-item>
                 <ion-label stacked>Categoría</ion-label>
                 <ion-select formControlName="fkCat" placeholder="Seleccione un categoría">
-                    <ion-option value="1">Prueba 1</ion-option>
-                    <ion-option value="2">Prueba 2</ion-option>
-                    <ion-option value="3">Prueba 3</ion-option>
+                    <ion-option *ngFor="let piso of edificio" value="{{piso.id}}">{{piso.nombre}}</ion-option>
                 </ion-select>
             </ion-item>
             <ion-item *ngIf="ForRegProd.get('fkCat').errors && ForRegProd.get('fkCat').dirty">

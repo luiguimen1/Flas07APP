@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController} from 'ionic-angular';
+import {ConectarswProvider} from '../../providers/conectarsw/conectarsw';
 /**
  * Generated class for the ForcreproPage page.
  *
@@ -16,7 +17,7 @@ import {AlertController} from 'ionic-angular';
 })
 export class ForcreproPage {
     ForRegProd: FormGroup;
-    constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, private alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FormBuilder, private alertCtrl: AlertController, private conecta:ConectarswProvider) {
         this.iniciarFormulario()
     }
 
@@ -32,7 +33,23 @@ export class ForcreproPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ForcreproPage');
+        this.traerCategorias();
     }
+    
+    edificio;
+    traerCategorias(){
+        let estado = this.conecta.listarCategoria();
+        estado.subscribe(data=>{
+            this.cargarListaCat(data);
+        },err=>{
+            this.presentAlert("Error #26", "No puede acceder al servidor WEB") 
+        })
+    }
+    
+    cargarListaCat(data){
+        this.edificio = data;
+    }
+    
 
     registrarProdu() {
         let categoria = {
