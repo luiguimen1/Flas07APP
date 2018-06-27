@@ -4,6 +4,7 @@ import {RestaPage} from '../resta/resta';
 import {TablamPage} from '../tablam/tablam';
 import {ForcrecatPage} from '../forcrecat/forcrecat';
 import {ForcreproPage} from '../forcrepro/forcrepro';
+import {ListacategoriaPage} from '../listacategoria/listacategoria';
 
 @Component({
     selector: 'page-home',
@@ -49,6 +50,10 @@ export class HomePage {
     
     irCreateProd(){
         this.navCtrl.push(ForcreproPage);
+    }
+    
+    irListaCat(){
+        this.navCtrl.push(ListacategoriaPage);
     }
 
 

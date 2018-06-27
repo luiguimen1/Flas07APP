@@ -30,11 +30,8 @@ export class ForcrecatPage {
     }
 
     registrarCate() {
-        let categoria = {
-            cat: this.ForRegCate.value
-        }
+        let categoria = this.ForRegCate.value;
         let estado = this.conecta.registarCategoria(categoria);
-        
         estado.subscribe(data=>{
             this.analizarRes(data);
         },err=>{

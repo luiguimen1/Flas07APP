@@ -11,6 +11,7 @@ import {TablamPage} from '../pages/tablam/tablam';
 import {RestaPage} from '../pages/resta/resta';
 import {ForcrecatPage} from '../pages/forcrecat/forcrecat';
 import {ForcreproPage} from '../pages/forcrepro/forcrepro';
+import {ListacategoriaPage} from '../pages/listacategoria/listacategoria';
 import {ConectarswProvider} from '../providers/conectarsw/conectarsw';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -21,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http';
         RestaPage,
         TablamPage,
         ForcrecatPage,
-        ForcreproPage
+        ForcreproPage,
+        ListacategoriaPage
     ],
     imports: [
         BrowserModule,
@@ -35,7 +37,8 @@ import {HttpClientModule} from '@angular/common/http';
         RestaPage,
         TablamPage,
         ForcrecatPage,
-        ForcreproPage
+        ForcreproPage,
+        ListacategoriaPage
     ],
     providers: [
         StatusBar,

@@ -31,7 +31,11 @@ export class ConectarswProvider {
         let urlLocal = this.url + "Controller/Categoria/CrearCategoria.php";
         return this.http.post(urlLocal, JSON.stringify(categoria), this.options);
     }
-
-
+    
+    registarProducto(producto){
+        console.table(producto);
+        let urlLocal = this.url +"Controller/Producto/CrearProducto.php";
+        return this.http.post(urlLocal, JSON.stringify(producto), this.options);
+    }
 
 }

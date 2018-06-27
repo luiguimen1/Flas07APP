@@ -42,7 +42,7 @@ export class ForcreproPage {
         estado.subscribe(data=>{
             this.cargarListaCat(data);
         },err=>{
-            this.presentAlert("Error #26", "No puede acceder al servidor WEB") 
+            this.presentAlert("Error #26", "No puede acceder al servidor WEB <br> Lista Categorias") 
         })
     }
     
@@ -50,18 +50,25 @@ export class ForcreproPage {
         this.edificio = data;
     }
     
-
     registrarProdu() {
-        let categoria = {
-            cat: this.ForRegProd.value
-        }
-        console.table(categoria);
-        let hola = "Confirmación";
-        let mensaje = "La categoria fue creada si problema en el sistema";
-        this.presentAlert(hola, mensaje);
-        this.iniciarFormulario();
+        let producto =this.ForRegProd.value;
+        let estado = this.conecta.registarProducto(producto);
+        estado.subscribe(data=>{
+            this.procesarRespuesta(data);
+        },
+        err=>{
+            this.presentAlert("Error #27", "<div class='error'>No se peude acceder al servidor WEB <br> Crear Producto</div>");
+        });        
     }
 
+    procesarRespuesta(data){
+        if(data.success == "OK"){
+            this.presentAlert("Confirmación", "<div class='acierto'>El producto fue registrado en la BD</div>");
+            this.iniciarFormulario();
+        }else{
+            this.presentAlert("Error #28", "<div class='error'>No se peude acceder al servidor WEB <br> El prodcuto tiene problema s de registro</div>");
+        }
+    }
 
     presentConfirm() {
         let alert = this.alertCtrl.create({
