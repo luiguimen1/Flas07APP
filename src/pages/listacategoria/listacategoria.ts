@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {LoadingController} from 'ionic-angular';
 import {ConectarswProvider} from '../../providers/conectarsw/conectarsw';
+import {ListaproductoPage} from '../listaproducto/listaproducto';
 
 /**
  * Generated class for the ListacategoriaPage page.
@@ -16,7 +18,12 @@ import {ConectarswProvider} from '../../providers/conectarsw/conectarsw';
 })
 export class ListacategoriaPage {
     edificio;
-    constructor(public navCtrl: NavController, public navParams: NavParams, private conecta: ConectarswProvider) {
+    filtro;
+    conNumero;
+    constructor(public navCtrl: NavController, public navParams: NavParams, private conecta: ConectarswProvider, public loadingCtrl: LoadingController) {
+        this.filtro = false;
+        this.conNumero = false;
+        this.edificio = [];
     }
 
     ionViewDidLoad() {
@@ -25,11 +32,17 @@ export class ListacategoriaPage {
     }
 
     traerListaCat() {
-        let estado = this.conecta.listarCategoria();
+        this.edificio = [];
+        let loader = this.loadingCtrl.create({
+            content: "Se esta consultado las Categorias"
+        });
+        loader.present();
+        let estado = this.conecta.listarCategoria(this.filtro);
         estado.subscribe(data => {
             this.trabajarRespuesta(data);
+            loader.dismiss();
         }, err => {
-
+            loader.dismiss();
         });
     }
 
@@ -42,6 +55,11 @@ export class ListacategoriaPage {
                 piso.foto = fotoRemota + piso.foto;
             } else {
                 piso.foto = "assets/imgs/" + piso.foto;
+            }
+            if (!this.conNumero) {
+                data[i] = piso;
+                let nombre = piso.nombre.split("#");
+                piso.nombre = nombre[0];
             }
             data[i] = piso;
         }
@@ -58,4 +76,20 @@ export class ListacategoriaPage {
         }, 2000);
     }
 
+    irListaProducto(categoria) {
+        let cat = {categoria: categoria};
+        this.navCtrl.push(ListaproductoPage, cat);
+    }
+
+    ejecutarFiltro() {
+        this.traerListaCat();
+    }
+
+    ejecutarNumero() {
+        this.traerListaCat();
+    }
+
+    Activar() {
+        this.traerListaCat();
+    }
 }

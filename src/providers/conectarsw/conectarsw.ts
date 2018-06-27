@@ -22,20 +22,26 @@ export class ConectarswProvider {
         console.log('Hello ConectarswProvider Provider');
     }
 
-    listarCategoria() {
+    listarCategoria(estado) {
         let urlLocal = this.url + "Controller/Categoria/listarCategoria.php";
-        return this.http.post(urlLocal, JSON.stringify({acesso: true}), this.options);
+        return this.http.post(urlLocal, JSON.stringify({acesso: estado}), this.options);
     }
 
     registarCategoria(categoria) {
         let urlLocal = this.url + "Controller/Categoria/CrearCategoria.php";
         return this.http.post(urlLocal, JSON.stringify(categoria), this.options);
     }
-    
-    registarProducto(producto){
+
+    registarProducto(producto) {
         console.table(producto);
-        let urlLocal = this.url +"Controller/Producto/CrearProducto.php";
+        let urlLocal = this.url + "Controller/Producto/CrearProducto.php";
         return this.http.post(urlLocal, JSON.stringify(producto), this.options);
     }
+
+    listarProdXCat(categoria) {
+        let urlLocal = this.url + "Controller/Producto/listarProdXcat.php";
+        return this.http.post(urlLocal, JSON.stringify(categoria), this.options);
+    }
+
 
 }

@@ -18,13 +18,27 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <h1 class="LosTitulo"> Formulario de registro<br>de Productos </h1>
-    <ion-item *ngFor="let pro of edificio">
+    <ion-list>
+        <ion-item>
+            <ion-label>Ver todas las categorias {{filtro}}</ion-label>
+            <ion-toggle (ionChange)="ejecutarFiltro()" [(ngModel)]="filtro"></ion-toggle>
+            
+        </ion-item>
+        <ion-item>
+             <ion-label>ver numero de Productos {{conNumero}}</ion-label>
+            <ion-toggle (ionChange)="ejecutarNumero()" [(ngModel)]="conNumero"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <button ion-button (click)="Activar()">Activar filtro</button>
+        </ion-item>
+    </ion-list>
+    <ion-item *ngFor="let cate of edificio">
         <ion-avatar item-start>
-            <img src='{{pro.foto}}'>
+            <img src='{{cate.foto}}'>
         </ion-avatar>
-        <p>{{pro.nombre}}</p>
-        <ion-avatar item-end>
-            <img src='assets/imgs/flechaDer.png'>
+        <p>{{cate.nombre}}</p>
+        <ion-avatar item-end (click)="irListaProducto(cate)">
+                    <img src='assets/imgs/flechaDer.png'>
         </ion-avatar>
     </ion-item>
 </ion-content>
