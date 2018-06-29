@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {LoadingController} from 'ionic-angular';
 import {ConectarswProvider} from '../../providers/conectarsw/conectarsw';
 import {ListaproductoPage} from '../listaproducto/listaproducto';
+import {CapfotoPage} from '../capfoto/capfoto';
 
 /**
  * Generated class for the ListacategoriaPage page.
@@ -91,5 +92,17 @@ export class ListacategoriaPage {
 
     Activar() {
         this.traerListaCat();
+    }
+
+    capFoto(categoria) {
+        let opciones = {
+            type: 1,
+            elemento: {
+                id: categoria.id,
+                nombre: categoria.nombre,
+                foto: categoria.foto
+            }
+        }
+        this.navCtrl.push(CapfotoPage, {opciones: opciones});
     }
 }

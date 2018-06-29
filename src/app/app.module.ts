@@ -16,6 +16,7 @@ import {ListacategoriaPage} from '../pages/listacategoria/listacategoria';
 import {AlertaPage} from '../pages/alerta/alerta';
 import {ListaproductoPage} from '../pages/listaproducto/listaproducto';
 import {VistaproductoPage} from '../pages/vistaproducto/vistaproducto';
+import {CapfotoPage} from '../pages/capfoto/capfoto';
 
 import {ConectarswProvider} from '../providers/conectarsw/conectarsw';
 
@@ -32,7 +33,8 @@ import {HttpClientModule} from '@angular/common/http';
         ListacategoriaPage,
         ListaproductoPage,
         AlertaPage,
-        VistaproductoPage
+        VistaproductoPage,
+        CapfotoPage
     ],
     imports: [
         BrowserModule,
@@ -50,7 +52,8 @@ import {HttpClientModule} from '@angular/common/http';
         ListacategoriaPage,
         ListaproductoPage,
         AlertaPage,
-        VistaproductoPage
+        VistaproductoPage,
+        CapfotoPage
     ],
     providers: [
         StatusBar,

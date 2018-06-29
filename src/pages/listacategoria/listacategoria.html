@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
     <ion-refresher (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
@@ -22,10 +22,10 @@
         <ion-item>
             <ion-label>Ver todas las categorias {{filtro}}</ion-label>
             <ion-toggle (ionChange)="ejecutarFiltro()" [(ngModel)]="filtro"></ion-toggle>
-            
+
         </ion-item>
         <ion-item>
-             <ion-label>ver numero de Productos {{conNumero}}</ion-label>
+            <ion-label>ver numero de Productos {{conNumero}}</ion-label>
             <ion-toggle (ionChange)="ejecutarNumero()" [(ngModel)]="conNumero"></ion-toggle>
         </ion-item>
         <ion-item>
@@ -36,7 +36,17 @@
         <ion-avatar item-start>
             <img src='{{cate.foto}}'>
         </ion-avatar>
-        <p>{{cate.nombre}}</p>
+        <ion-grid>
+            <ion-row>
+                <ion-col auto>
+                    {{cate.nombre}}
+                </ion-col>
+                <ion-col auto>
+                    <ion-icon ios="ios-camera" (click)="capFoto(cate)" md="md-camera" color="primary"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
         <ion-avatar item-end (click)="irListaProducto(cate)">
                     <img src='assets/imgs/flechaDer.png'>
         </ion-avatar>
