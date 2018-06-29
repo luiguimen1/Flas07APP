@@ -12,16 +12,12 @@ import {RestaPage} from '../pages/resta/resta';
 import {ForcrecatPage} from '../pages/forcrecat/forcrecat';
 import {ForcreproPage} from '../pages/forcrepro/forcrepro';
 import {ListacategoriaPage} from '../pages/listacategoria/listacategoria';
-
 import {AlertaPage} from '../pages/alerta/alerta';
 import {ListaproductoPage} from '../pages/listaproducto/listaproducto';
 import {VistaproductoPage} from '../pages/vistaproducto/vistaproducto';
 import {CapfotoPage} from '../pages/capfoto/capfoto';
-
 import {ConectarswProvider} from '../providers/conectarsw/conectarsw';
-
 import {HttpClientModule} from '@angular/common/http';
-
 import { Camera } from '@ionic-native/camera';
 
 @NgModule({

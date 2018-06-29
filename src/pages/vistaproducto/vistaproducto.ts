@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {CapfotoPage} from '../capfoto/capfoto';
 
 /**
  * Generated class for the VistaproductoPage page.
@@ -15,7 +16,6 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 })
 export class VistaproductoPage {
     producto;
-    type = 2;
     constructor(public navCtrl: NavController, public navParams: NavParams) {
         this.producto = this.navParams.get("producto");
     }
@@ -23,13 +23,17 @@ export class VistaproductoPage {
     ionViewDidLoad() {
         console.log('ionViewDidLoad VistaproductoPage');
     }
-
-    VerSD() {
-
-    }
-
-    verCAM() {
-
+    
+    capFoto() {
+        let opciones = {
+            type: 2,
+            elemento: {
+                id: this.producto.id,
+                nombre: this.producto.nombre,
+                foto: this.producto.foto
+            }
+        }
+        this.navCtrl.push(CapfotoPage, {opciones: opciones});
     }
 
 }

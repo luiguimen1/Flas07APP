@@ -38,11 +38,12 @@
             <ion-label range-right>100</ion-label>
         </ion-range>
     </ion-item>
-    
+
     <ion-card>
         <div class="card-title">Foto a cargar</div>
         <img src="{{imageURI}}" *ngIf="imageURI" alt="Ionic File" width="300" />       
     </ion-card>
-
-
+    <ion-item>
+        <button ion-button (click)="CargarImagen()">Cargar Imagen</button>
+    </ion-item>
 </ion-content>

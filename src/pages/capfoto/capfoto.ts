@@ -65,5 +65,9 @@ export class CapfotoPage {
                 console.error(error);
             });
     }
+    
+    CargarImagen(){
+        
+    }
 
 }
