@@ -15,12 +15,21 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 })
 export class VistaproductoPage {
     producto;
+    type = 2;
     constructor(public navCtrl: NavController, public navParams: NavParams) {
         this.producto = this.navParams.get("producto");
     }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad VistaproductoPage');
+    }
+
+    VerSD() {
+
+    }
+
+    verCAM() {
+
     }
 
 }
