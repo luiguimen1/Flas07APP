@@ -1,0 +1,35 @@
+page-vistaproducto {
+    .card-background-page {
+
+        ion-card {
+            position: relative;
+            text-align: center;
+        }
+
+        .card-title {
+            position: absolute;
+            top: 36%;
+            font-size: 2.0em;
+            width: 100%;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(239,197,202,1);
+            background: -moz-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(186,39,55,1) 35%, rgba(186,39,55,1) 63%, rgba(241,142,153,1) 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(239,197,202,1)), color-stop(35%, rgba(186,39,55,1)), color-stop(63%, rgba(186,39,55,1)), color-stop(100%, rgba(241,142,153,1)));
+            background: -webkit-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(186,39,55,1) 35%, rgba(186,39,55,1) 63%, rgba(241,142,153,1) 100%);
+            background: -o-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(186,39,55,1) 35%, rgba(186,39,55,1) 63%, rgba(241,142,153,1) 100%);
+            background: -ms-linear-gradient(top, rgba(239,197,202,1) 0%, rgba(186,39,55,1) 35%, rgba(186,39,55,1) 63%, rgba(241,142,153,1) 100%);
+            background: linear-gradient(to bottom, rgba(239,197,202,1) 0%, rgba(186,39,55,1) 35%, rgba(186,39,55,1) 63%, rgba(241,142,153,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc5ca', endColorstr='#f18e99', GradientType=0 );            
+        }
+
+        .card-subtitle {
+            font-size: 1.0em;
+            position: absolute;
+            top: 52%;
+            width: 100%;
+            color: #fff;
+        }
+
+    }
+}

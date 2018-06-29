@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ConectarswProvider} from '../../providers/conectarsw/conectarsw';
+import {VistaproductoPage} from '../vistaproducto/vistaproducto';
 
 /**
  * Generated class for the ListaproductoPage page.
@@ -39,7 +40,7 @@ export class ListaproductoPage {
     }
 
     trabajarRespuesta(data) {
-       let fotoRemota = "http://192.168.0.225:8081/Flas07/imgPro/";
+        let fotoRemota = "http://192.168.0.225:8081/Flas07/imgPro/";
         let limite = data.length;
         for (let i = 0; i < limite; i++) {
             let piso = data[i];
@@ -52,6 +53,9 @@ export class ListaproductoPage {
         this.edificio = data
     }
     
-   
-
+    
+    verDetProducto(producto){
+        let pro = {producto: producto};
+        this.navCtrl.push(VistaproductoPage,pro);
+    }
 }

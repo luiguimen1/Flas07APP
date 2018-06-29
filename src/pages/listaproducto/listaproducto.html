@@ -22,7 +22,7 @@
     </ion-card>
     
     <h4 class="LosTitulo">Listado de productos </h4>
-    <ion-item *ngFor="let pro of edificio">
+    <ion-item *ngFor="let pro of edificio" (click)="verDetProducto(pro)">
         <ion-avatar item-start>
             <img src='{{pro.foto}}'>
         </ion-avatar>

@@ -15,8 +15,10 @@ import {ListacategoriaPage} from '../pages/listacategoria/listacategoria';
 
 import {AlertaPage} from '../pages/alerta/alerta';
 import {ListaproductoPage} from '../pages/listaproducto/listaproducto';
+import {VistaproductoPage} from '../pages/vistaproducto/vistaproducto';
 
 import {ConectarswProvider} from '../providers/conectarsw/conectarsw';
+
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -29,7 +31,8 @@ import {HttpClientModule} from '@angular/common/http';
         ForcreproPage,
         ListacategoriaPage,
         ListaproductoPage,
-        AlertaPage
+        AlertaPage,
+        VistaproductoPage
     ],
     imports: [
         BrowserModule,
@@ -46,7 +49,8 @@ import {HttpClientModule} from '@angular/common/http';
         ForcreproPage,
         ListacategoriaPage,
         ListaproductoPage,
-        AlertaPage
+        AlertaPage,
+        VistaproductoPage
     ],
     providers: [
         StatusBar,
