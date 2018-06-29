@@ -31,5 +31,18 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+    <p>Esta funcion esta activa solo para la CAM</p>
+    <ion-item>
+        <ion-range min="10" max="100" [(ngModel)]="calidad" color="secondary">
+            <ion-label range-left>10</ion-label>
+            <ion-label range-right>100</ion-label>
+        </ion-range>
+    </ion-item>
+    
+    <ion-card>
+        <div class="card-title">Foto a cargar</div>
+        <img src="{{imageURI}}" *ngIf="imageURI" alt="Ionic File" width="300" />       
+    </ion-card>
+
 
 </ion-content>

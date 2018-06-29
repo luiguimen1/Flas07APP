@@ -1,0 +1,268 @@
+Se agregar las plataformas de Android y IOS
+ionic cordova platform add ios
+ionic cordova platform add android
+Configurar camara
+1. Se instalan con plugins
+ionic cordova plugin add cordova-plugin-camera
+npm install --save @ionic-native/camera
+
+*******************************************************************************
+presentar Camara el app.modules ***********************************************
+import { Camera } from '@ionic-native/camera';
+
+Si se presenta en el bloque de los providers ys e agrega la instancia como: ****
+Camara
+
+*******************************************************************************
+Ahora se instancia la camara en la page.ts *************************************
+import {Camera, CameraOptions} from '@ionic-native/camera';
+
+Se define la variable en el cosntructor de la Page ***************************** 
+private camera: Camera
+
+y dentro del constructor se define la variable *********************************
+this.calidad = 50;
+
+En el mismo Page.ts se definen los siguientes metodos **************************
+    calidad;
+    imageURI;
+    getImagenSD() {
+        let options: CameraOptions = {
+            destinationType: this.camera.DestinationType.FILE_URI,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+            targetWidth: 500,
+            targetHeight: 500,
+            quality: 100
+        }
+        this.camera.getPicture(options)
+            .then(imageData => {
+                this.imageURI = imageData;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    getPictureCamara() {
+        let options: CameraOptions = {
+            destinationType: this.camera.DestinationType.DATA_URL,
+            targetWidth: 500,
+            targetHeight: 500,
+            quality: this.calidad
+        }
+        this.camera.getPicture(options)
+            .then(imageData => {
+                this.imageURI = `data:image/jpeg;base64,${imageData}`;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+    info;
+
+
+
+
+Ahora en el page.html se inserta el siguiente codigo****************************
+<ion-item>
+            <p>{{imageURI}}</p>
+            <button ion-button color="secondary" (click)="getPictureCamara()">Camara</button>
+            <button ion-button color="secondary" (click)="getImagenSD()">Librería</button>
+        </ion-item>
+        <ion-item>
+            <ion-range min="10" max="100" [(ngModel)]="calidad" color="secondary">
+                <ion-label range-left>10</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+        </ion-item>
+        <ion-item>
+            <h4>Estado Actual</h4>
+            <img src="{{imageURI}}" *ngIf="imageURI" alt="Ionic File" width="300" />
+        </ion-item>
+        <ion-item>
+            <button ion-button (click)="CargarImagen()">Cargar Imagen</button>
+        </ion-item>
+        <p>{{info}}</p>
+
+********************************************************************************
+*************** OPIONES PARA CARGAR LA IMAGEN AL SERVIDOR **********************
+
+En la page.html se coloca el boton que activara la ejecucion de subir la imagen*
+al servidor con el siguiente codigo ********************************************
+
+        <ion-item>
+            <button ion-button (click)="CargarImagen()">CargarImagen</button>
+        </ion-item>
+
+Ahora, Se requiere instalar los siguientes plugins, que permitiran enviar ******
+enviar la imagen al servidor, Los plugins son: *********************************
+
+ionic cordova plugin add cordova-plugin-file
+npm install --save @ionic-native/file
+ionic cordova plugin add cordova-plugin-file-transfer
+npm install --save @ionic-native/file-transfer
+
+Ahora, se debe realizar la presentación de los plugins *************************
+para poder ser utilizados, de la siguiente forma:   ****************************
+
+En el archivo app.modules se agregan las siguientes lineas *********************
+
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+
+ahora, en el bloque de providers se agregan las siguientes items ***************
+FileTransfer,
+  FileUploadOptions,
+  FileTransferObject,
+  File
+
+ahora, en la page donde esta activando la camara se agregan los ****************
+siguientes plugins *************************************************************
+import { LoadingController } from 'ionic-angular';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
+ahora, en el constructor de la page se realiza las siguientes instancias *******
+
+private transfer: FileTransfer,
+public loadingCtrl: LoadingController
+
+ahora, se crean los siguientes metodos para enviar la imagen *******************
+al servidor web en PHP, Nota: Mas adelante se explica el codigo ****************
+en PHP para pdoer resepcionar la Imagen y los cambios que hay que **************
+realizar en la BD para poder almacenar el nombre de la IMg *********************
+
+info;
+    CargarImagen() {
+        let loader = this.loadingCtrl.create({
+            content: "<b>El archivo esta Cargado...</b>"
+        });
+        loader.present();
+        const fileTransfer: FileTransferObject = this.transfer.create();
+        var datos = {id: this.persona.id, type: 'Cliente'};
+        let options: FileUploadOptions = {
+            fileKey: 'ionicfile',
+            fileName: 'ionicfile',
+            chunkedMode: false,
+            mimeType: "image/jpeg",
+            headers: {},
+            httpMethod: 'POST',
+            params: datos
+        }
+        this.info = "Procesando";
+        fileTransfer.upload(this.imageURI, this.ruta + 'Controller/SubirFoto.php', options)
+            .then((data) => {
+                this.actualizar(data);
+                // this.info = JSON.stringify(data)+" -> Lo que llega";
+                loader.dismiss();
+            }, (err) => {
+                console.log(err);
+                loader.dismiss();
+                this.info = " -> Error de Comunicación";
+                // Puede Colocar una alerta de que existe un problema con el servidor
+            });
+    }
+    actualizar(data) {
+        if (data.response != "no") {
+            this.imageURI = this.ruta + "img/" + JSON.parse(data.response).sucess;
+            this.info = "La imagen fue cargada";
+            // Puede Colocar una alerta de que la imagen fue cargada
+        } else {
+            // Puede Colocar una alerta de que la imagen NO fue cargada
+            this.info = "La imagen no fue cargada";
+        }
+    }
+
+
+********************************************************************************
+***************** Ahora la configuración en el Swevidor PHP ********************
+********************************************************************************
+En la carpeta Contorller se crear un archivo ***********************************
+SubirFoto.php
+
+y dentro de este se agrega el siguiente codigo *********************************
+<?php
+require '../CLASS/BD/datos.php';
+require '../CLASS/BD/MySQLi.php';
+require '../CLASS/VO/ClienteVO.php';
+require '../CLASS/DAO/ClienteDAO.php';
+
+header('Access-Control-Allow-Origin: *');
+$json = file_get_contents("php://input");
+$post = json_decode(json_encode($_POST));
+$post->nombre = time() . ".jpg";
+$post->success = "OK";
+$data = array();
+$ClienteDAO = new ClienteDAO();
+
+if ($ClienteDAO->fotoXId($post)) {
+    move_uploaded_file($_FILES["ionicfile"]["tmp_name"], "../img/" . $post->nombre);
+    $data['sucess'] = $post->nombre;
+    //$data['file'] = json_encode($_FILES);
+} else {
+    $data['sucess'] = "no";
+}
+echo json_encode($data);
+
+Ahora, se debe modificar el archivo ClienteDAO.php *****************************
+en el cual se debe insertar el siguiente codigo ********************************
+
+public function fotoXId($array) {
+        $cuando = $array->id;
+        $porquien = $array->nombre;
+        $sql = "update cliente set foto = ? where id = ?;";
+        $BD = new ConectarBD();
+        $conn = $BD->getMysqli();
+        $smtp = $conn->prepare($sql);
+        $smtp->bind_param("si", $porquien, $cuando);
+        $resp;
+        if ($smtp->execute()) {
+            $resp = true;
+        } else {
+            $resp = false;
+        }
+        $smtp->close();
+        $conn->close();
+        return $resp;
+    }
+
+Ahora, en el motor de base de datos de nuestro proyecto ************************
+se debe crear un campo de foto en la tabla Cliente *****************************
+
+alter table cliente add column foto varchar(50) null default 'perfil.jpg';
+
+Nota:  *************************************************************************
+Al haber creado este campo es necesario modificar los metodos de:    ***********
+-> listaXCC     ****************************************************************
+-> listarJSON   ****************************************************************
+-> listar       ****************************************************************
+-> ingreso      ****************************************************************
+
+Agregando en bind_result un parametro llamado **********************************
+$foto
+
+Ahora, si requiere que la foto tambien se retorno debera ***********************
+Crear un atributo en el archivo ClienteVO.php **********************************
+el cual se recoemida llamar foto  y deberar tener sus respectivos GET y SET ****
+y realizar los respectivos cambios en la opciones que recorre ******************
+el cargue de datos en los respectivos metodos nombrados anteriormente **********
+ejemplo: ***********************************************************************
+$tmp["foto"] = $foto;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

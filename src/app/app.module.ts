@@ -22,6 +22,8 @@ import {ConectarswProvider} from '../providers/conectarsw/conectarsw';
 
 import {HttpClientModule} from '@angular/common/http';
 
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -59,7 +61,8 @@ import {HttpClientModule} from '@angular/common/http';
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        ConectarswProvider
+        ConectarswProvider,
+        Camera
     ]
 })
 export class AppModule {}
