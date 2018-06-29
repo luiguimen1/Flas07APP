@@ -28,17 +28,5 @@
     </ion-grid>
     <h3>Detalles:</h3>
     <p>{{producto.descripcion}}</p>
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <button ion-button color="secondary" (click)="VerSD()">Ver SD <ion-avatar item-end>
-                        <img src="assets/imgs/camara.png" />
-                    </ion-avatar>
-                </button>
-            </ion-col>
-            <ion-col>
-                <button ion-button color="primary" (click)="verCAM()">Ver Cam -> <ion-icon ios="ios-camera" md="md-camera"></ion-icon></button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <button ion-button color="secondary" (click)="capFoto()">Cambiar Foto</button>    
 </ion-content>

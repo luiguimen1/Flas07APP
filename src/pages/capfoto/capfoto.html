@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>Cambio de foto</ion-title>
+        <ion-title>Cambio para {{titulo}}</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
     <ion-card>
-        <div class="card-title">{{elemento.nombre}}</div>
+        <div class="card-title">#{{elemento.id}} - {{elemento.nombre}}</div>
         <img src="{{elemento.foto}}"/>        
     </ion-card>
     <ion-grid>

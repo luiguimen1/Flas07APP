@@ -18,7 +18,10 @@ import {VistaproductoPage} from '../pages/vistaproducto/vistaproducto';
 import {CapfotoPage} from '../pages/capfoto/capfoto';
 import {ConectarswProvider} from '../providers/conectarsw/conectarsw';
 import {HttpClientModule} from '@angular/common/http';
-import { Camera } from '@ionic-native/camera';
+import {Camera} from '@ionic-native/camera';
+
+import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
+import {File} from '@ionic-native/file';
 
 @NgModule({
     declarations: [
@@ -58,7 +61,11 @@ import { Camera } from '@ionic-native/camera';
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         ConectarswProvider,
-        Camera
+        Camera,
+        FileTransfer,
+     //   FileUploadOptions,
+        FileTransferObject,
+        File
     ]
 })
 export class AppModule {}
