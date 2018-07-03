@@ -5,6 +5,7 @@ import {TablamPage} from '../tablam/tablam';
 import {ForcrecatPage} from '../forcrecat/forcrecat';
 import {ForcreproPage} from '../forcrepro/forcrepro';
 import {ListacategoriaPage} from '../listacategoria/listacategoria';
+import {LeerqrPage} from '../leerqr/leerqr';
 
 @Component({
     selector: 'page-home',
@@ -28,7 +29,6 @@ export class HomePage {
         this.resultado = "la suma de " + this.n1 + " + " + this.n2 + " = " + (this.conF(this.n1) + this.conF(this.n2));
     }
 
-
     resta() {
         let data = {
             n1: this.n1,
@@ -43,20 +43,21 @@ export class HomePage {
         };
         this.navCtrl.push(TablamPage, {objecto: data});
     }
-    
-    irCreateCate(){
+
+    irCreateCate() {
         this.navCtrl.push(ForcrecatPage);
     }
-    
-    irCreateProd(){
+
+    irCreateProd() {
         this.navCtrl.push(ForcreproPage);
     }
-    
-    irListaCat(){
+
+    irListaCat() {
         this.navCtrl.push(ListacategoriaPage);
     }
 
-
-
+    irCodQR() {
+        this.navCtrl.push(LeerqrPage);
+    }
 
 }

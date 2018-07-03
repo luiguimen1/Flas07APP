@@ -1,8 +1,8 @@
 {
   "name": "productos",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Luis Eduardo Alvarez Meneses",
+  "homepage": "http://mirayaprender.com.co",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -21,6 +21,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/barcode-scanner": "^4.9.0",
     "@ionic-native/camera": "^4.9.0",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/file": "^4.9.0",
@@ -39,6 +40,8 @@
     "cordova-plugin-whitelist": "^1.3.3",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
+    "ngx-qrcode2": "0.0.9",
+    "phonegap-plugin-barcodescanner": "^8.0.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -47,7 +50,7 @@
     "@ionic/app-scripts": "3.1.10",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project",
+  "description": "Proyecto de Flas0007 CETcolsubsidio",
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -57,7 +60,10 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-camera": {},
       "cordova-plugin-file": {},
-      "cordova-plugin-file-transfer": {}
+      "cordova-plugin-file-transfer": {},
+      "phonegap-plugin-barcodescanner": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "android"
