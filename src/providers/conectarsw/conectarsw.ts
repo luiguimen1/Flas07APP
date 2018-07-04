@@ -43,5 +43,9 @@ export class ConectarswProvider {
         return this.http.post(urlLocal, JSON.stringify(categoria), this.options);
     }
 
+    ingreso(usuario) {
+        let urlLocal = this.url + "Controller/usuario/Ingreso.php";
+        return this.http.post(urlLocal, JSON.stringify(usuario), this.options);
+    }
 
 }

@@ -28,6 +28,8 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 
 import {LeerqrPage} from '../pages/leerqr/leerqr'
 
+import {IndexPage} from '../pages/index/index';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -41,7 +43,8 @@ import {LeerqrPage} from '../pages/leerqr/leerqr'
         AlertaPage,
         VistaproductoPage,
         CapfotoPage,
-        LeerqrPage
+        LeerqrPage,
+        IndexPage
     ],
     imports: [
         BrowserModule,
@@ -62,7 +65,8 @@ import {LeerqrPage} from '../pages/leerqr/leerqr'
         AlertaPage,
         VistaproductoPage,
         CapfotoPage,
-        LeerqrPage
+        LeerqrPage,
+        IndexPage
     ],
     providers: [
         StatusBar,
