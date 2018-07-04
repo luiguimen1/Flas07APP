@@ -12,5 +12,109 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 En el segmento de import se agrega *********************************************
 NgxQRCodeModule
 
-En el segmento de providers se agrega
+En el segmento de providers se agrega ******************************************
 BarcodeScanner
+
+ahora se va a la page de generar el QR y de leer qr ****************************
+se realiza importande  la libreria del barcodeScanner **************************
+import {BarcodeScanner} from '@ionic-native/barcode-scanner';
+
+ahora se realiza la instancia barcoScanner en el cosntructor *******************
+private barcodeScanner: BarcodeScanner
+
+1ra parte -> Generar codigo de tipo QR *****************************************
+apartir de campos de tipo imput se le asigna no nombre a la variable ***********
+desde el archivo html de page utilizando  [(ngModel)] **************************
+para el ejemplo se utilizara el siguiente campos *******************************
+
+<ion-input type="text" placeholder="MY QR Code data" [(ngModel)]="qrData"></ion-input>
+
+
+Donde la variable tiene el nombre de qrData. Esta varible se deve volver *******
+variable goblal he inicia el modo null en ts de page *************************************************
+
+qrData=null;
+
+ahora para trasforma el valor de qrData a codigo QR se implementa un metodo ****
+
+createCode() {
+    this.createdCode = this.qrData;
+}
+
+el cual previamente de existir la variable  ************************************
+createdCode
+
+y este metodo debe ser asigando a un boton para su ejecución: ******************
+en el archivo html de la page **************************************************
+
+<button ion-button full icon-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Crear QR</button>
+
+En el mismo html de page se debe crear un bloque que entienda el codigo QR *****
+para esto se utliza el siguiente codigo ****************************************
+
+ <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+
+este permite mostar el codigo generado *****************************************
+
+si se desea que la el campo cuando inicie no muestra nada se puede complemenatar¨****
+el codigo de la siguiente forma ¨****************************************************
+
+<ion-card *ngIf="createdCode">
+    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+    <ion-card-content>
+        <p>Value: {{ createdCode }}</p>
+    </ion-card-content>
+</ion-card>
+
+2Da parte -> leer codigo QR ****************************************************
+
+para este es neceario crear una variable glaobal a nivel de ts de page *********
+llamada scannedCode y debe iniciar en null, de la siguiente forma: *************
+
+scannedCode = null;
+
+
+ahora se crea un metodo que ejecute la lectura del QR **************************
+
+scanCode() {
+        this.barcodeScanner.scan().then(barcodeData => {
+            this.scannedCode = barcodeData.text;
+            /**
+             * Aqui puede asiganar o crear enlaces a la BD por medio del provider
+             */
+        }, (err) => {
+            console.log('Error: ', err);
+        });
+    }
+
+
+Ahora se crea un boton que llame al metodo en html de page *********************
+<button ion-button full icon-left (click)="scanCode()" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Leer QR</button>
+
+
+y por ultimo en la misma html de la page se agrega el siguiente codigo para mostrar ***
+el valor que fue leido de QR **********************************************************
+
+
+<ion-card *ngIf="scannedCode">
+        <ion-card-content>
+            Result from Scan: {{ scannedCode }}
+        </ion-card-content>
+    </ion-card> 
+
+
+Nota 1:
+Es de caracter obligatorio, haber instalado las librerias de la camara *********
+haber creado las respectivas instancias de la camara el app.modules ************
+de lo contrario no funciona el scaneo del QR ***********************************
+
+ver archivo de codigoCamara.txt lineas de 1 a 14
+
+Nota 2:
+El barcodeScanner se utiliza en las versiones 27.+ *****************************
+esto significa que puede llegar a presentarse problemas de compilación *********
+para solucionar este problema debe actualizar los esquemas de enlace ***********
+para utilice desde la console del proyecto de ionic ****************************
+el comando cordova clean *******************************************************
+luego ejecute el comando ionic serve --lab *************************************
+luego detenga su ejecución y por compile de nuevo.

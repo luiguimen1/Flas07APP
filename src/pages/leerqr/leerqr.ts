@@ -14,32 +14,36 @@ import {BarcodeScanner} from '@ionic-native/barcode-scanner';
     templateUrl: 'leerqr.html',
 })
 export class LeerqrPage {
-
-    constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private barcodeScanner: BarcodeScanner
-    ) {
-    }
+    qrData = null;
+    createdCode = null;
+    scannedCode = null;
+    
+    
+    constructor(public navCtrl: NavController,
+        public navParams: NavParams,
+        private barcodeScanner: BarcodeScanner
+    ) {}
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad LeerqrPage');
     }
-   
-        qrData = null;
-        createdCode = null;
-        scannedCode = null;
-    
-    
-        createCode() {
-            this.createdCode = this.qrData;
-        }
-    
-        scanCode() {
-            this.barcodeScanner.scan().then(barcodeData => {
-                this.scannedCode = barcodeData.text;
-            }, (err) => {
-                console.log('Error: ', err);
-            });
-        }
-        
+
+
+
+
+    createCode() {
+        this.createdCode = this.qrData;
+    }
+
+    scanCode() {
+        this.barcodeScanner.scan().then(barcodeData => {
+            this.scannedCode = barcodeData.text;
+            /**
+             * Aqui puede asiganar o crear enlaces a la BD por medio del provider
+             */
+        }, (err) => {
+            console.log('Error: ', err);
+        });
+    }
+
 }
