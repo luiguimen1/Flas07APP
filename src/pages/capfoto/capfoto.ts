@@ -24,7 +24,8 @@ export class CapfotoPage {
     calidad; // Es la calidad de foto, este valor cambia con el cambio de ion-range
     imageURI; // Variable que almacena la ruta local de imagen a cargar, ya se de desde la SD o desde la CAM
     titulo = ""; // Variable que identifica el objecto a cambiar
-    ruta = "http://192.168.0.225:8081/Flas07/Controller/subirImg/load.php"; // es la ruta de cargar del servidor web 
+    //ruta = "http://192.168.0.225:8081/Flas07/Controller/subirImg/load.php"; // es la ruta de cargar del servidor web 
+    ruta = "http://www.mirayaprender.com.co/flas07/Controller/subirImg/load.php"; // es la ruta de cargar del servidor web 
     constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private transfer: FileTransfer,
         public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
         this.data = this.navParams.get("opciones");

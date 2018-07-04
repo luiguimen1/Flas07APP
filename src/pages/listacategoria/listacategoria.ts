@@ -48,7 +48,8 @@ export class ListacategoriaPage {
     }
 
     trabajarRespuesta(data) {
-        let fotoRemota = "http://192.168.0.225:8081/Flas07/imgCat/";
+      //  let fotoRemota = "http://192.168.0.225:8081/Flas07/imgCat/";
+        let fotoRemota = "http://www.mirayaprender.com.co/flas07/imgCat/";
         let limite = data.length;
         for (let i = 0; i < limite; i++) {
             let piso = data[i];

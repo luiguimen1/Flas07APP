@@ -10,7 +10,8 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class ConectarswProvider {
 
-    url = 'http://192.168.0.225:8081/flas07/';
+//    url = 'http://192.168.0.225:8081/flas07/';
+    url = 'http://www.mirayaprender.com.co/flas07/';
 
     options = {
         headers: {
