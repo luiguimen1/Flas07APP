@@ -82,8 +82,12 @@ CREATE TABLE `user` (
   `nombre` varchar(70) NOT NULL,
   `apellido` varchar(70) NOT NULL,
   `rol` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `cc` varchar(15) NOT NULL,
+  `clave` varchar(50) DEFAULT NULL,
+  `foto` varchar(45) DEFAULT 'sinfotouser.jpg',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cc` (`cc`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
